@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_1/model/listapedido.dart';
 import 'package:projeto_1/model/sabores.dart';
 
 class Cardapioview extends StatelessWidget {
-  const Cardapioview({super.key});
+  // Recebe a instância de DynamicListStorage
+  final DynamicListStorage listStorage;
+
+  const Cardapioview({super.key, required this.listStorage});
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +27,16 @@ class Cardapioview extends StatelessWidget {
       body: Stack(
         children: [
           Opacity(
-            opacity: 0.3, 
+            opacity: 0.3,
             child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('lib/images/logopizza.jpg'), 
-                  fit: BoxFit.cover, 
+                  image: AssetImage('lib/images/logopizza.jpg'),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
-
           ListView.builder(
             itemCount: sabores.length,
             itemBuilder: (context, index) {
@@ -65,8 +68,16 @@ class Cardapioview extends StatelessWidget {
                   ),
                   trailing: const Icon(Icons.arrow_forward),
                   onTap: () {
-                    var pizzadetalhe = sabores[index];
-                    Navigator.pushNamed(context, '/detalhes',arguments: pizzadetalhe);
+                    // Passa o item selecionado e navega para a tela de detalhes
+                    Navigator.pushNamed(
+                      context,
+                      '/detalhes',
+                      arguments: {
+                        'sabor': sabor,
+                        'listStorage':
+                            listStorage, // Passando a instância de DynamicListStorage
+                      },
+                    );
                   },
                 ),
               );
@@ -77,5 +88,3 @@ class Cardapioview extends StatelessWidget {
     );
   }
 }
-
-

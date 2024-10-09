@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_1/model/sabores.dart';
+import 'package:projeto_1/model/listapedido.dart';
+import 'package:projeto_1/view/pedido.dart';
 
-class DetalhesView extends StatefulWidget {
+class DetalhesView extends StatelessWidget {
   const DetalhesView({super.key});
 
   @override
-  State<DetalhesView> createState() => _DetalhesViewState();
-}
-
-class _DetalhesViewState extends State<DetalhesView> {
-  @override
   Widget build(BuildContext context) {
-    Sabores dados = ModalRoute.of(context)!.settings.arguments as Sabores;
+    // Obtém os argumentos passados pela navegação
+    final arguments = ModalRoute.of(context)!.settings.arguments as Map;
+    final Sabores dados = arguments['sabor'] as Sabores;
+    final DynamicListStorage listStorage =
+        arguments['listStorage'] as DynamicListStorage;
 
     return Scaffold(
       appBar: AppBar(
@@ -28,17 +29,16 @@ class _DetalhesViewState extends State<DetalhesView> {
       body: Stack(
         children: [
           Opacity(
-            opacity: 0.3, 
+            opacity: 0.3,
             child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('lib/images/logopizza.jpg'), 
-                  fit: BoxFit.cover, 
+                  image: AssetImage('lib/images/logopizza.jpg'),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.all(20),
             child: ListView(
@@ -52,10 +52,7 @@ class _DetalhesViewState extends State<DetalhesView> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                
                 const SizedBox(height: 30),
-                
-                
                 Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -76,8 +73,6 @@ class _DetalhesViewState extends State<DetalhesView> {
                     ),
                   ),
                 ),
-                
-                
                 Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -98,7 +93,6 @@ class _DetalhesViewState extends State<DetalhesView> {
                     ),
                   ),
                 ),
-
                 Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -131,14 +125,22 @@ class _DetalhesViewState extends State<DetalhesView> {
                           textStyle: const TextStyle(fontSize: 22),
                           minimumSize: const Size(200, 50),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          listStorage.adicionaitem(dados);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  PedidoView(listStorage: listStorage),
+                            ),
+                          );
+                        },
                         child: const Text('Adicionar')),
                   ),
                 ),
               ],
             ),
           ),
-          
         ],
       ),
     );
