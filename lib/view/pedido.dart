@@ -9,7 +9,7 @@ class PedidoView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Obtém os itens da lista dinâmica
+    
     final List<Sabores> listaPedidos = listStorage.getItems();
 
     return Scaffold(
@@ -26,7 +26,6 @@ class PedidoView extends StatelessWidget {
       ),
       body: Column(
         children: [
-          // Expande a lista de pedidos para ocupar o espaço disponível
           Expanded(
             child: Stack(
               children: [
@@ -41,10 +40,23 @@ class PedidoView extends StatelessWidget {
                     ),
                   ),
                 ),
-                listaPedidos.isEmpty
-                    ? const Center(
-                        child: Text('Nenhum pedido adicionado ainda!'))
-                    : ListView.builder(
+                listaPedidos.isEmpty ? const Center(
+                        child: Card(
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              backgroundColor: Colors.white,
+                               child: Icon(
+                                  Icons.shopping_cart,
+                                  size: 24,
+                                  color: Colors.black,
+                                )
+                            ),
+                            title: Text('Não ha pedidos'),
+                          )
+                        )
+                  )
+                  :
+                        ListView.builder(
                         itemCount: listaPedidos.length,
                         itemBuilder: (context, index) {
                           final sabor = listaPedidos[index];
@@ -59,7 +71,7 @@ class PedidoView extends StatelessWidget {
                                 ),
                               ),
                               title: Text(
-                                sabor.nome, // Exibe o nome do sabor
+                                sabor.nome, 
                                 style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -82,23 +94,37 @@ class PedidoView extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  foregroundColor: Colors.white,
-                  textStyle: const TextStyle(fontSize: 22),
-                  minimumSize: const Size(200, 50),
-                ),
-                onPressed: () {
-                  Navigator.pushNamed(
-                      context, '/cardapio'); // Volta ao cardápio
-                },
-                child: const Text('Cardápio'),
-              ),
+              child: SizedBox(
+                width: double.infinity,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                          foregroundColor: Colors.white,
+                          textStyle: const TextStyle(fontSize: 22),
+                          minimumSize: const Size(150, 50), 
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/cardapio');
+                        },
+                        child: const Text('Cardápio'),
+                        ),
+                       ElevatedButton(
+                         style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.black,
+                            foregroundColor: Colors.white,
+                            textStyle: const TextStyle(fontSize: 22),
+                            minimumSize: const Size(150, 50), 
+                          ),
+                          onPressed: () {},
+                          child: const Text('Comprar'),
+                        ),
+                     ],
+                  ),
+               ),
             ),
-          ),
         ],
       ),
     );

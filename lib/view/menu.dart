@@ -49,7 +49,9 @@ class Menuview extends StatelessWidget {
                   ),
                   title: const Text('Carrinho'),
                   trailing: const Icon(Icons.arrow_forward),
-                  onTap: () {},
+                  onTap: () {
+                     Navigator.pushNamed(context, '/pedido'); 
+                  },
                 ),
               ),
             ],

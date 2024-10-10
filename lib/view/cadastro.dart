@@ -20,6 +20,7 @@ class Cadastroview extends StatelessWidget{
                     height: 300,
                   ),
                 ),
+              
             ],
           ),
         ),

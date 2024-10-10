@@ -1,12 +1,12 @@
 class Login{
 
-  //contatos
+  
   
   final String email;
   final String senha;
   
 
-  //construtor
+  
   Login(
     this.email,
     this.senha,
