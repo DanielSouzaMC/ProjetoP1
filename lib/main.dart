@@ -2,6 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_1/model/listapedido.dart';
 import 'package:projeto_1/view/Item.dart';
+import 'package:projeto_1/view/cadastro.dart';
 import 'package:projeto_1/view/cardapio.dart';
 import 'package:projeto_1/view/detalhes.dart';
 import 'package:projeto_1/view/login.dart';
@@ -35,6 +36,7 @@ class MainApp extends StatelessWidget {
         '/pedido': (context) => PedidoView(listStorage: listStorage),
         '/menu': (context) =>  Menuview(listStorage: listStorage),
         '/detalhes': (context) => const DetalhesView(),
+        '/cadastro':(context) => Cadastro(),
       },
     );
   }

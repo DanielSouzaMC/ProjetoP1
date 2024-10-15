@@ -116,7 +116,9 @@ class _Loginview extends State<Loginview> {
                           textStyle: const TextStyle(fontSize: 22),
                           minimumSize: const Size(200, 50),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/cadastro');
+                        },
                         child: const Text('CRIAR CONTA')),
                   ),
                 ),
