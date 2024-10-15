@@ -60,7 +60,8 @@ class _Loginview extends State<Loginview> {
                       "Login:",
                       style: TextStyle(fontSize: 40),
                       textAlign: TextAlign.left,
-                    )),
+                    )
+                  ),
                 criarCampoTexto(
                   'E-mail',
                   txtEmail,
@@ -120,10 +121,11 @@ class _Loginview extends State<Loginview> {
                   ),
                 ),
               ],
-            ),
-          ),
-        ),
+            ),           
+          ),         
+        ),       
       ),
-    );
+      
+    );    
   }
 }

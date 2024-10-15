@@ -33,7 +33,7 @@ class MainApp extends StatelessWidget {
         '/recuperacao': (context) => const RecuperacaoView(),
         '/cardapio': (context) => Cardapioview(listStorage: listStorage),
         '/pedido': (context) => PedidoView(listStorage: listStorage),
-        '/menu': (context) => const Menuview(),
+        '/menu': (context) =>  Menuview(listStorage: listStorage),
         '/detalhes': (context) => const DetalhesView(),
       },
     );

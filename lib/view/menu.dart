@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_1/model/listapedido.dart';
 
 class Menuview extends StatelessWidget {
-  const Menuview({super.key});
+
+    final DynamicListStorage listStorage;
+  
+  const Menuview({super.key, required this.listStorage});
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +63,27 @@ class Menuview extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                  textStyle: const TextStyle(fontSize: 22),
+                  minimumSize: const Size(200, 50),
+                ),
+                onPressed: () {
+                  
+                  listStorage.limpartudo();
+                  
+                  Navigator.pushNamed(context, '/login'); 
+                },
+                child: const Text('Sair'),
+              ),
+            ),
+          ),
     );
   }
 }

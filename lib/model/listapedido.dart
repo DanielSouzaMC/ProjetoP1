@@ -14,4 +14,12 @@ class DynamicListStorage {
   bool vazia() {
     return _listaPedidos.isEmpty;
   }
+
+  void removepedido(Sabores item){
+    _listaPedidos.remove(item);
+  }
+
+  void limpartudo(){
+    _listaPedidos.clear();
+  }
 }
