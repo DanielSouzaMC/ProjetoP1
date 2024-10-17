@@ -9,6 +9,7 @@ import 'package:projeto_1/view/login.dart';
 import 'package:projeto_1/view/menu.dart';
 import 'package:projeto_1/view/pedido.dart';
 import 'package:projeto_1/view/recuperacao.dart';
+import 'package:projeto_1/view/comprafim.dart';
 
 void main() {
   runApp(
@@ -34,9 +35,10 @@ class MainApp extends StatelessWidget {
         '/recuperacao': (context) => const RecuperacaoView(),
         '/cardapio': (context) => Cardapioview(listStorage: listStorage),
         '/pedido': (context) => PedidoView(listStorage: listStorage),
-        '/menu': (context) =>  Menuview(listStorage: listStorage),
+        '/menu': (context) => Menuview(listStorage: listStorage),
         '/detalhes': (context) => const DetalhesView(),
-        '/cadastro':(context) => Cadastro(),
+        '/cadastro': (context) => Cadastro(),
+        '/comprafim': (context) => ComprafinalView(),
       },
     );
   }

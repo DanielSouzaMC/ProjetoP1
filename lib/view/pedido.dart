@@ -19,13 +19,14 @@ class _PedidoViewState extends State<PedidoView> {
   void initState() {
     super.initState();
     listaPedidos = widget.listStorage.getItems();
-    _calculaTotal(); 
+    _calculaTotal();
   }
 
   void _calculaTotal() {
     setState(() {
       total = listaPedidos.fold(0.0, (soma, item) {
-        String valorFormatado = item.valor.replaceAll('R\$ ', '').replaceAll(',', '.');
+        String valorFormatado =
+            item.valor.replaceAll('R\$ ', '').replaceAll(',', '.');
         return soma + double.parse(valorFormatado);
       });
     });
@@ -106,11 +107,11 @@ class _PedidoViewState extends State<PedidoView> {
                                 ),
                               ),
                               trailing: const Icon(Icons.delete_forever_sharp),
-                              onTap: () {                                
+                              onTap: () {
                                 setState(() {
                                   widget.listStorage.removepedido(sabor);
                                   listaPedidos = widget.listStorage.getItems();
-                                  _calculaTotal(); 
+                                  _calculaTotal();
                                 });
                               },
                             ),
@@ -123,7 +124,7 @@ class _PedidoViewState extends State<PedidoView> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
-              children: [                
+              children: [
                 Text(
                   'Total: R\$ ${total.toStringAsFixed(2)}',
                   style: const TextStyle(fontSize: 24),
@@ -154,7 +155,13 @@ class _PedidoViewState extends State<PedidoView> {
                           textStyle: const TextStyle(fontSize: 22),
                           minimumSize: const Size(150, 50),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            widget.listStorage.limpartudo();
+                            listaPedidos = widget.listStorage.getItems();
+                          });
+                          Navigator.pushNamed(context, '/comprafim');
+                        },
                         child: const Text('Comprar'),
                       ),
                     ],

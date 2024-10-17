@@ -8,11 +8,9 @@ class DetalhesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
     final arguments = ModalRoute.of(context)!.settings.arguments as Map;
     final Sabores dados = arguments['sabor'] as Sabores;
-    final Listapedidos listStorage =
-        arguments['listStorage'] as Listapedidos;
+    final Listapedidos listStorage = arguments['listStorage'] as Listapedidos;
 
     return Scaffold(
       appBar: AppBar(
