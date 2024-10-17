@@ -3,8 +3,8 @@ import 'package:projeto_1/model/listapedido.dart';
 import 'package:projeto_1/model/sabores.dart';
 
 class Cardapioview extends StatelessWidget {
-  // Recebe a instância de DynamicListStorage
-  final DynamicListStorage listStorage;
+  
+  final Listapedidos listStorage;
 
   const Cardapioview({super.key, required this.listStorage});
 

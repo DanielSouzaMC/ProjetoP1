@@ -1,6 +1,6 @@
 import 'package:projeto_1/model/sabores.dart';
 
-class DynamicListStorage {
+class Listapedidos {
   final List<Sabores> _listaPedidos = [];
 
   void adicionaitem(Sabores item) {

@@ -21,7 +21,7 @@ void main() {
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
-  static final DynamicListStorage listStorage = DynamicListStorage();
+  static final Listapedidos listStorage = Listapedidos();
 
   @override
   Widget build(BuildContext context) {

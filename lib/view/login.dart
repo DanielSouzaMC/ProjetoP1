@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_1/model/logins.dart';
-
 import 'components/campo_texto.dart';
 
 class Loginview extends StatefulWidget {
@@ -16,14 +15,36 @@ class _Loginview extends State<Loginview> {
 
   String? errorMessage;
 
+  ListaCadastroManual listStorage = ListaCadastroManual();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final args = ModalRoute.of(context)?.settings.arguments as ListaCadastroManual?;
+    if (args != null) {
+      listStorage = args;
+    }
+  }
+
   void login() {
     String email = txtEmail.text.trim();
     String senha = txtSenha.text.trim();
 
-    List<Login> usuarios = Login.gerarDados();
+    if (email.isEmpty || senha.isEmpty) {
+      setState(() {
+        errorMessage = "Erro: Preencha todos os campos.";
+      });
+      return;
+    }
 
-    bool usuarioEncontrado = usuarios
-        .any((usuario) => usuario.email == email && usuario.senha == senha);
+    List<Login> usuariosEstaticos = Login.gerarDados();
+    List<Login> usuariosDinamicos = listStorage.obterItens();
+
+    bool usuarioEncontrado = usuariosEstaticos.any((usuario) =>
+            usuario.email == email && usuario.senha == senha) ||
+        usuariosDinamicos.any(
+            (usuario) => usuario.email == email && usuario.senha == senha);
 
     setState(() {
       if (usuarioEncontrado) {
@@ -60,8 +81,7 @@ class _Loginview extends State<Loginview> {
                       "Login:",
                       style: TextStyle(fontSize: 40),
                       textAlign: TextAlign.left,
-                    )
-                  ),
+                    )),
                 criarCampoTexto(
                   'E-mail',
                   txtEmail,
@@ -91,7 +111,7 @@ class _Loginview extends State<Loginview> {
                         textStyle: const TextStyle(fontSize: 22),
                         minimumSize: const Size(200, 50),
                       ),
-                      onPressed: login, //
+                      onPressed: login,
                       child: const Text('LOGIN'),
                     ),
                   ),
@@ -123,11 +143,10 @@ class _Loginview extends State<Loginview> {
                   ),
                 ),
               ],
-            ),           
-          ),         
-        ),       
+            ),
+          ),
+        ),
       ),
-      
-    );    
+    );
   }
 }

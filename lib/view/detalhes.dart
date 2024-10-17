@@ -8,11 +8,11 @@ class DetalhesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Obtém os argumentos passados pela navegação
+   
     final arguments = ModalRoute.of(context)!.settings.arguments as Map;
     final Sabores dados = arguments['sabor'] as Sabores;
-    final DynamicListStorage listStorage =
-        arguments['listStorage'] as DynamicListStorage;
+    final Listapedidos listStorage =
+        arguments['listStorage'] as Listapedidos;
 
     return Scaffold(
       appBar: AppBar(

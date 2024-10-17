@@ -3,7 +3,7 @@ import 'package:projeto_1/model/listapedido.dart';
 import 'package:projeto_1/model/sabores.dart';
 
 class PedidoView extends StatefulWidget {
-  final DynamicListStorage listStorage;
+  final Listapedidos listStorage;
 
   const PedidoView({super.key, required this.listStorage});
 

@@ -3,7 +3,7 @@ import 'package:projeto_1/model/listapedido.dart';
 
 class Menuview extends StatelessWidget {
 
-    final DynamicListStorage listStorage;
+    final Listapedidos listStorage;
   
   const Menuview({super.key, required this.listStorage});
 
