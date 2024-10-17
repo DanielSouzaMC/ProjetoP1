@@ -79,5 +79,5 @@ class _ComprafinalViewState extends State<ComprafinalView> {
         ),
       ),
     );
-  }git push -u origin master
+  }
 }
